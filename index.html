@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>    
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Dirasa Hub | المكتبة الشاملة لجميع المواد</title>    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">    
+    <style>    
+        :root { --p: #4f46e5; --d: #1e1b4b; --a: #fbbf24; --bg: #f3f4f6; --c: #ffffff; --text: #1f2937; }    
+        .dark { --bg: #0f172a; --c: #1e293b; --p: #818cf8; --text: #f8fafc; }    
+        body { font-family: 'Cairo', sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.3s; }    
+        
+        nav { background: var(--d); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }    
+        .logo { font-size: 1.6rem; font-weight: 900; }    
+        .logo span { color: var(--a); }    
+        .theme-toggle { cursor: pointer; background: var(--a); border: none; padding: 6px 15px; border-radius: 20px; font-weight: bold; }
+
+        header { background: linear-gradient(135deg, var(--d), var(--p)); color: white; padding: 60px 20px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }    
+        .owner { background: rgba(255,255,255,0.15); padding: 5px 25px; border-radius: 30px; border: 1px solid var(--a); display: inline-block; margin-bottom: 15px; }    
+        
+        .container { max-width: 1200px; margin: -30px auto 50px; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }    
+        .card { background: var(--c); border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border-top: 6px solid var(--p); transition: 0.3s; }    
+        .card:hover { transform: translateY(-5px); }
+        
+        .subject-title { display: flex; align-items: center; gap: 10px; font-size: 1.3rem; margin-bottom: 15px; color: var(--p); border-bottom: 1px solid #eee; padding-bottom: 10px; font-weight: 900; }
+        
+        .section-title { font-weight: bold; color: var(--d); margin: 12px 0 5px; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; opacity: 0.8; }
+        .dark .section-title { color: var(--a); }
+
+        .item { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(0,0,0,0.03); margin-bottom: 4px; border-radius: 8px; font-size: 0.85rem; }    
+        .dl { background: var(--p); color: white; text-decoration: none; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; transition: 0.2s; }    
+        .dl:hover { background: var(--d); }    
+
+        footer { background: var(--d); color: white; padding: 30px; text-align: center; margin-top: 30px; }    
+    </style>    
+</head>    
+<body>    
+    <nav>    
+        <div class="logo">Dirasa<span>Hub</span></div>    
+        <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">🌓 المظهر</button>    
+    </nav>    
+    
+    <header>    
+        <div class="owner">المطور: عبد الحق بولبداوي</div>    
+        <h1>موسوعة BEM <span style="color:var(--a)">الشاملة</span></h1>    
+        <p>كل ما يحتاجه تلميذ الرابعة متوسط في جميع المواد</p>    
+    </header>    
+
+    <div class="container" id="hub"></div>    
+
+    <footer>    
+        <p>جميع الحقوق محفوظة لمنصة <b>Dirasa Hub</b> &copy; 2026</p>    
+        <p>بإشراف المبدع: عبد الحق بولبداوي</p>
+    </footer>    
+
+    <script>    
+        // مصفوفة جميع المواد المقررة
+        const subjects = [    
+            {n:'اللغة العربية', i:'📖', c:'#ef4444'},
+            {n:'الرياضيات', i:'📐', c:'#4f46e5'}, 
+            {n:'العلوم الطبيعية', i:'🧪', c:'#10b981'},
+            {n:'الفيزياء', i:'⚡', c:'#f59e0b'},    
+            {n:'تاريخ وجغرافيا', i:'🌍', c:'#16a34a'},
+            {n:'تربية إسلامية', i:'🕌', c:'#8b5cf6'},
+            {n:'لغة إنجليزية', i:'🇬🇧', c:'#06b6d4'},
+            {n:'لغة فرنسية', i:'🇫🇷', c:'#3b82f6'},
+            {n:'تربية مدنية', i:'⚖️', c:'#6366f1'}
+        ];    
+
+        const hub = document.getElementById('hub');    
+        
+        subjects.forEach(s => {    
+            let content = `
+                <div class="card" style="border-top-color:${s.c}">
+                    <div class="subject-title"><span>${s.i}</span> ${s.n}</div>
+                    
+                    <div class="section-title">📌 دروس وملخصات</div>
+                    <div class="item"><span>ملخصات الفصول الثلاثة</span><a href="https://www.dzexams.com/ar/4am" target="_blank" class="dl">تحميل</a></div>
+
+                    <div class="section-title">📝 الفروض المنزلية</div>
+                    <div class="item"><span>فروض الفصل 1</span><a href="https://www.dzexams.com/ar/4am" target="_blank" class="dl">PDF</a></div>
+                    <div class="item"><span>فروض الفصل 2</span><a href="https://www.dzexams.com/ar/4am" target="_blank" class="dl">PDF</a></div>
+
+                    <div class="section-title">🏆 الاختبارات الفصلية</div>
+                    <div class="item"><span>اختبار الفصل 1</span><a href="https://www.dzexams.com/ar/4am" target="_blank" class="dl">عرض</a></div>
+                    <div class="item"><span>اختبار الفصل 2</span><a href="https://www.dzexams.com/ar/4am" target="_blank" class="dl">عرض</a></div>
+                    <div class="item"><span>اختبار الفصل 3</span><a href="https://www.dzexams.com/ar/4am" target="_blank" class="dl">عرض</a></div>
+                </div>`;    
+            
+            hub.innerHTML += content;    
+        });    
+    </script>    
+</body>    
+</html>
